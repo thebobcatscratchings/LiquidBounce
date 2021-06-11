@@ -29,5 +29,4 @@ jobs:
           cd 1.8.9-Forge/build/libs
           export LB_VERSION=$(find . -regex '.*LiquidBounce-b[0-9|.]*\.jar')
           cp $LB_VERSION liquidbounce.jar
-          mv liquidbounce.jar liquidbounce-.jar ${{ github.event.head_commit.id }}
-          curl -X POST -F "artifact=@liquidbounce.jar" -H "Authentication: ${{ secrets.NIGHTLY_PASS }}" -F "gh_id=${{ github.event.head_commit.id }}" -F "gh_ref=${{ github.ref }}" -F "gh_message=${{ github.event.head_commit.message }}" -F "gh_timestamp=${{ github.event.head_commit.timestamp }}" -F "lb_version=$LB_VERSION" https://liquidbounce.net/php/nightly/webhook
+          mv liquidbounce.jar ${{ github.event.head_commit.id }}.jar
